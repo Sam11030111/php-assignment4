@@ -10,6 +10,7 @@
 const routeResultsDiv = document.getElementById("route-results");
 const stopContainer = document.getElementById("stop-container");
 const stopResultsDiv = document.getElementById("stop-results");
+const routeNumberInput = document.getElementById("route-number");
 
 // Fetch Routes API
 const fetchRoutes = async (routeNumber) => {
@@ -73,6 +74,7 @@ const displayRoute = (route) => {
 
   routeResultsDiv.appendChild(routeDiv);
 
+  // After create "Stops Form", then addEventListener
   stopForm.addEventListener("submit", async (event) => {
     console.log("submit");
     event.preventDefault();
@@ -114,10 +116,7 @@ const displayStops = (stops) => {
   });
 };
 
-const form = document.getElementById("search-form");
 const searchButton = document.querySelector("button");
-const routeNumberInput = document.getElementById("route-number");
-
 const updateButtonState = () => {
   const isEmpty = routeNumberInput.value.trim() === "";
   searchButton.disabled = isEmpty;
@@ -136,13 +135,17 @@ routeNumberInput.addEventListener("input", () => {
   routeNumberInput.value = routeNumberInput.value.toUpperCase();
 });
 
+// Initial submit button state
 updateButtonState();
 
+// Handle Search button submission
+const form = document.getElementById("search-form");
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   const routeNumber = routeNumberInput.value;
   try {
     await fetchRoutes(routeNumber);
+    stopContainer.style.display = "none";
   } catch (error) {
     console.log(error);
     routeResultsDiv.innerHTML = "";

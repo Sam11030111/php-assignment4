@@ -1,0 +1,43 @@
+<!-------w------------
+
+    Assignment 4
+    Name: Hung-Sheng Lee
+    Date: June 25th, 2024
+    Description: 
+
+--------------------->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <title>My Open Data Assignment</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Winnipeg Transit Route</h1>
+      <img class="logo" src="./bus-station.png" alt="bus image" />
+      <form id="search-form">
+        <label for="route-number">Route Number:</label>
+        <input
+          type="text"
+          id="route-number"
+          name="route-number"
+          placeholder="Enter route number"
+        />
+
+        <button class="glow-on-hover" type="submit">Search</button>
+      </form>
+
+      <div id="route-results"></div>
+      <div id="stop-container">
+        <ul id="stop-results"></ul>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

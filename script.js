@@ -7,6 +7,8 @@
 
 *********************/
 
+import config from "./config.js";
+
 const routeResultsDiv = document.getElementById("route-results");
 const stopContainer = document.getElementById("stop-container");
 const stopResultsDiv = document.getElementById("stop-results");
@@ -14,7 +16,7 @@ const routeNumberInput = document.getElementById("route-number");
 
 // Fetch Routes API
 const fetchRoutes = async (routeNumber) => {
-  const apiKey = "uR6UnmHHjbTEBfaMLUnk";
+  const apiKey = config.apiKey;
   const url = `https://api.winnipegtransit.com/v3/routes/${routeNumber}.json?api-key=${apiKey}`;
 
   const res = await fetch(url);
@@ -29,7 +31,7 @@ const fetchRoutes = async (routeNumber) => {
 
 // Fetch Stops API
 const fetchStops = async (routeNumber) => {
-  const apiKey = "uR6UnmHHjbTEBfaMLUnk";
+  const apiKey = config.apiKey;
   const url = `https://api.winnipegtransit.com/v3/stops.json?api-key=${apiKey}&route=${routeNumber}`;
 
   const res = await fetch(url);
@@ -76,7 +78,6 @@ const displayRoute = (route) => {
 
   // After create "Stops Form", then addEventListener
   stopForm.addEventListener("submit", async (event) => {
-    console.log("submit");
     event.preventDefault();
     const routeNumber = routeNumberInput.value;
     try {
